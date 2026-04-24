@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterm Activities — OOP Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Additional styling for inner pages */
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--accent-blue-hover);
+        }
+        .activity-section {
+            margin-bottom: 60px;
+            background-color: var(--surface-color-glass);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .activity-section h3 {
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+        }
+        .code-block {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: monospace;
+            color: #e6e6e6;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CMMI.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#midterm" class="nav-link active">Midterm</a></li>
+                <li><a href="../index.html#final" class="nav-link">Final</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header reveal">
+            <a href="../index.html#midterm" class="back-link">← Back to Portfolio</a>
+            <h1 class="section-title">Midterm Activities</h1>
+            <p class="section-subtitle">Java programs, code snippets, and explanations demonstrating problem-solving in Object-Oriented Programming.</p>
+        </div>
+
+        <div class="activity-section reveal delay-1">
+            <h3>Activity 1: ATM with Transfer Feature</h3>
+            <p><strong>Description:</strong> A console-based Java application simulating an ATM machine with withdrawal, deposit, and transfer functionalities.</p>
+            
+            <div class="code-block">
+<pre><code>public class ATM {
+    private double balance;
+    
+    public ATM(double initialBalance) {
+        this.balance = initialBalance;
+    }
+    
+    // ... Methods go here ...
+}</code></pre>
+            </div>
+            
+            <h4>Learnings & Reflection</h4>
+            <p>In this activity, I learned how to use conditional statements and methods effectively to manage states within a Java program...</p>
+        </div>
+
+        <!-- Add more activities here as needed -->
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
