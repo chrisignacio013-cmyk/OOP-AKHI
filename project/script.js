@@ -158,7 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (href && href.startsWith('mailto')) return;
                 
                 // If it's an external or internal page link, do warp speed
-                if (href && !link.classList.contains('active')) {
+                if (href) {
+                    // Only skip if it's linking to the exact same page without a hash
+                    if (href === window.location.pathname.split('/').pop()) return;
+                    
                     e.preventDefault();
                     isWarpSpeed = true;
                     
