@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
         }
+
         .back-link {
             color: var(--accent-blue);
             text-decoration: none;
@@ -23,9 +25,11 @@
             margin-bottom: 20px;
             font-weight: 500;
         }
+
         .back-link:hover {
             color: var(--accent-blue-hover);
         }
+
         .assignment-section {
             margin-bottom: 60px;
             background-color: var(--surface-color-glass);
@@ -33,10 +37,12 @@
             border-radius: 24px;
             border: 1px solid var(--border-color);
         }
+
         .assignment-section h3 {
             margin-bottom: 15px;
             color: var(--accent-blue);
         }
+
         .document-box {
             background-color: #0d0d0d;
             padding: 30px;
@@ -46,12 +52,14 @@
             border: 1px solid var(--border-color);
             line-height: 1.8;
         }
+
         .media-gallery {
             display: flex;
             flex-direction: column;
             gap: 16px;
             margin: 20px 0;
         }
+
         .media-gallery img {
             width: 100%;
             border-radius: 12px;
@@ -59,12 +67,14 @@
             display: block;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .media-gallery img:hover {
             transform: scale(1.01);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
+
 <body>
     <!-- Background Canvas for Stars -->
     <canvas id="bg-canvas"></canvas>
@@ -94,42 +104,58 @@
         <div class="page-header reveal">
             <a href="../index.html#midterm" class="back-link">← Back to Portfolio</a>
             <h1 class="section-title">Midterm Assignments</h1>
-            <p class="section-subtitle">Initial assignments establishing foundational knowledge in Java and Object-Oriented Programming.</p>
+            <p class="section-subtitle">Initial assignments establishing foundational knowledge in Java and
+                Object-Oriented Programming.</p>
         </div>
 
         <!-- All About Me -->
         <div class="assignment-section reveal delay-1">
             <h3>All About Me</h3>
-            <p><strong>Description:</strong> An introductory assignment to share personal background, interests, and goals for the Object-Oriented Programming course.</p>
-            
+            <p><strong>Description:</strong> An introductory assignment to share personal background, interests, and
+                goals for the Object-Oriented Programming course.</p>
+
             <div class="media-gallery">
                 <img src="../media/all-about-me.png" alt="All About Me Assignment" loading="lazy">
             </div>
-            
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp; Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Writing this assignment was a fun way to start the subject. It made me realize why I chose IT and what my goals are for this OOP class. I'm actually a bit nervous because programming can be hard, but I'm excited to learn Java since I hear it's used everywhere. I hope I can get good at it by the end of the semester.</p>
+
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp;
+                    Reflection</h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Writing this assignment was a fun way to
+                    start the subject. It made me realize why I chose IT and what my goals are for this OOP class. I'm
+                    actually a bit nervous because programming can be hard, but I'm excited to learn Java since I hear
+                    it's used everywhere. I hope I can get good at it by the end of the semester.</p>
             </div>
         </div>
 
         <!-- Assignment #1: What is Java? -->
         <div class="assignment-section reveal delay-2">
             <h3>Assignment #1: What is Java?</h3>
-            <p><strong>Description:</strong> Research and explanation of Java's core features, history, and why it is widely used in Object-Oriented Programming.</p>
-            
+            <p><strong>Description:</strong> Research and explanation of Java's core features, history, and why it is
+                widely used in Object-Oriented Programming.</p>
+
             <div class="media-gallery">
                 <img src="../media/assignment1-page1.png" alt="Assignment 1 — Page 1" loading="lazy">
                 <img src="../media/assignment1-page2.png" alt="Assignment 1 — Page 2" loading="lazy">
                 <img src="../media/assignment1-page3.png" alt="Assignment 1 — Page 3" loading="lazy">
             </div>
-            
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp; Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Before this, I didn't really know what Java was besides the logo I used to see on my old phone. Doing this research helped me understand that Java is an object-oriented language. The whole "Write Once, Run Anywhere" concept blew my mind a little bit because it means we don't have to rewrite code for different devices. It's a bit overwhelming with all the new terms like JVM and bytecodes, but I think I'm starting to get the big picture.</p>
+
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp;
+                    Reflection</h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Before this, I didn't really know what Java
+                    was besides the logo I used to see on my old phone. Doing this research helped me understand that
+                    Java is an object-oriented language. The whole "Write Once, Run Anywhere" concept blew my mind a
+                    little bit because it means we don't have to rewrite code for different devices. It's a bit
+                    overwhelming with all the new terms like JVM and bytecodes, but I think I'm starting to get the big
+                    picture.</p>
             </div>
         </div>
     </div>
 
     <script src="../script.js"></script>
 </body>
+
 </html>
