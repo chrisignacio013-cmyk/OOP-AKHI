@@ -53,6 +53,23 @@
             margin: 20px 0;
             border: 1px solid var(--border-color);
         }
+        .media-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .media-gallery img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .media-gallery img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 
@@ -234,6 +251,10 @@ public class AssignmentOperators {
                     like in math. The ternary operator <code>? :</code> is actually pretty cool though, it's like a
                     shortcut for an if-else statement. I definitely need more practice with these, but getting all 6
                     outputs right felt like solving a puzzle.</p>
+            </div>
+
+            <div class="media-gallery" style="margin-top: 20px;">
+                <img src="../media/activity2-handwritten.png" alt="Activity 2 Handwritten Work" loading="lazy">
             </div>
         </div>
 

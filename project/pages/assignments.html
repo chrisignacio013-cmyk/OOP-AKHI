@@ -46,6 +46,23 @@
             border: 1px solid var(--border-color);
             line-height: 1.8;
         }
+        .media-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .media-gallery img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .media-gallery img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -85,14 +102,12 @@
             <h3>All About Me</h3>
             <p><strong>Description:</strong> An introductory assignment to share personal background, interests, and goals for the Object-Oriented Programming course.</p>
             
-            <div class="document-box">
-                <p><em>(Document Content Attached)</em></p>
-                <p>Hello! My name is Christian Manuel M. Ignacio. I am a BSIT 2-4 student at PUP...</p>
-                <p style="color: var(--text-secondary); margin-top: 20px; font-size: 0.9em;">[Please see the attached document for the full "All About Me" content.]</p>
+            <div class="media-gallery">
+                <img src="../media/all-about-me.png" alt="All About Me Assignment" loading="lazy">
             </div>
             
             <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp; Reflection</h4>
                 <p style="color: var(--text-secondary); font-size: 0.95rem;">Writing this assignment was a fun way to start the subject. It made me realize why I chose IT and what my goals are for this OOP class. I'm actually a bit nervous because programming can be hard, but I'm excited to learn Java since I hear it's used everywhere. I hope I can get good at it by the end of the semester.</p>
             </div>
         </div>
@@ -102,14 +117,14 @@
             <h3>Assignment #1: What is Java?</h3>
             <p><strong>Description:</strong> Research and explanation of Java's core features, history, and why it is widely used in Object-Oriented Programming.</p>
             
-            <div class="document-box">
-                <p><em>(Document Content Attached)</em></p>
-                <p><strong>Java</strong> is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let programmers write once, run anywhere (WORA)...</p>
-                <p style="color: var(--text-secondary); margin-top: 20px; font-size: 0.9em;">[Please see the attached document for the complete assignment response.]</p>
+            <div class="media-gallery">
+                <img src="../media/assignment1-page1.png" alt="Assignment 1 — Page 1" loading="lazy">
+                <img src="../media/assignment1-page2.png" alt="Assignment 1 — Page 2" loading="lazy">
+                <img src="../media/assignment1-page3.png" alt="Assignment 1 — Page 3" loading="lazy">
             </div>
             
             <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings &amp; Reflection</h4>
                 <p style="color: var(--text-secondary); font-size: 0.95rem;">Before this, I didn't really know what Java was besides the logo I used to see on my old phone. Doing this research helped me understand that Java is an object-oriented language. The whole "Write Once, Run Anywhere" concept blew my mind a little bit because it means we don't have to rewrite code for different devices. It's a bit overwhelming with all the new terms like JVM and bytecodes, but I think I'm starting to get the big picture.</p>
             </div>
         </div>
