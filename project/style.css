@@ -41,6 +41,7 @@ body {
     z-index: -1;
     opacity: 0.5;
     pointer-events: none;
+    animation: floatGlow 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glow-1 {
@@ -49,6 +50,7 @@ body {
     width: 50vw;
     height: 50vw;
     background: radial-gradient(circle, var(--accent-blue-glow) 0%, transparent 70%);
+    animation-duration: 25s;
 }
 
 .glow-2 {
@@ -57,6 +59,29 @@ body {
     width: 60vw;
     height: 60vw;
     background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+    animation-duration: 30s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(10vw, 5vh) scale(1.1); }
+    66% { transform: translate(-5vw, 15vh) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Mouse cursor light effect */
+.cursor-light {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(10, 132, 255, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+    opacity: 0;
 }
 
 /* Container */

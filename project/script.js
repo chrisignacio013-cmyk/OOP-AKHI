@@ -49,4 +49,50 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
         });
     });
+
+    // Mouse cursor light effect
+    const cursorLight = document.createElement('div');
+    cursorLight.classList.add('cursor-light');
+    document.body.appendChild(cursorLight);
+
+    let isMouseMoving = false;
+    let mouseTimeout;
+
+    document.addEventListener('mousemove', (e) => {
+        cursorLight.style.left = e.clientX + 'px';
+        cursorLight.style.top = e.clientY + 'px';
+        cursorLight.style.opacity = '1';
+
+        // Add a subtle 3D tilt to cards on hover
+        const targetCard = e.target.closest('.card');
+        if (targetCard) {
+            const rect = targetCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            
+            targetCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            targetCard.style.transition = 'transform 0.1s ease';
+        }
+
+        clearTimeout(mouseTimeout);
+        isMouseMoving = true;
+        
+        mouseTimeout = setTimeout(() => {
+            isMouseMoving = false;
+            cursorLight.style.opacity = '0';
+        }, 1500);
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.4s ease';
+        });
+    });
 });
