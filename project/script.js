@@ -95,4 +95,100 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transition = 'transform 0.4s ease';
         });
     });
+
+    // Background Canvas Stars
+    const canvas = document.getElementById('bg-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        const resizeCanvas = () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        };
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let mouse = { x: null, y: null };
+        document.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        document.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                
+                let maxDistance = 150;
+                
+                if (distance < maxDistance && mouse.x != null) {
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+                    
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy / 10;
+                    }
+                }
+                this.draw();
+            }
+        }
+
+        const initParticles = () => {
+            particles = [];
+            let numberOfParticles = (width * height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        };
+
+        const animateParticles = () => {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+            }
+            requestAnimationFrame(animateParticles);
+        };
+
+        initParticles();
+        animateParticles();
+    }
 });
