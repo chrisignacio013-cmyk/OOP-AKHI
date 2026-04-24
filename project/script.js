@@ -146,13 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 isWarpSpeed = false;
                 warpMultiplier = 0;
-                
-                // Set the current positions as the new base positions 
-                // so they don't rapidly slide back across the screen
-                particles.forEach(p => {
-                    p.baseX = p.x;
-                    p.baseY = p.y;
-                });
             }
         };
         requestAnimationFrame(animateBrake);
@@ -261,11 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (this.x !== this.baseX) {
                         let dx = this.x - this.baseX;
-                        this.x -= dx / 10;
+                        this.x -= dx / 50;
                     }
                     if (this.y !== this.baseY) {
                         let dy = this.y - this.baseY;
-                        this.y -= dy / 10;
+                        this.y -= dy / 50;
                     }
                 }
                 this.draw();
