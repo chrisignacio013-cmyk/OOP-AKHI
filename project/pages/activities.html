@@ -74,6 +74,8 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
     </style>
+    <!-- Prism.js for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -139,7 +141,7 @@
 
             <h4>Part I: Bitwise, Ternary, and Assignment Operators</h4>
             <div class="code-block">
-                <pre><code>// Bitwise operators
+                <pre><code class="language-java">// Bitwise operators
 public class BitwiseOperator {
     public static void main(String[] args) {
         int a = 5;   // 0101
@@ -200,7 +202,7 @@ public class AssignmentOperators {
 
             <h4 style="margin-top: 30px;">Part II: Combining Operators (Tricky cases)</h4>
             <div class="code-block">
-                <pre><code>public class Part2 {
+                <pre><code class="language-java">public class Part2 {
     public static void main(String[] args) {
 
         // 1 - tricky increment (number)
@@ -255,7 +257,7 @@ public class AssignmentOperators {
                 operations using <code>Scanner</code>, conditional statements, and loops.</p>
 
             <div class="code-block">
-                <pre><code>import java.util.Scanner;
+                <pre><code class="language-java">import java.util.Scanner;
 
 public class ATMWithdrawalLimit {
     public static void main(String[] args) {
@@ -327,7 +329,7 @@ public class ATMWithdrawalLimit {
                 structures, loops, and user-defined validation to track tuition, discounts, and balances.</p>
 
             <div class="code-block">
-                <pre><code>import java.util.Scanner;
+                <pre><code class="language-java">import java.util.Scanner;
 
 public class StudentPaymentSystemIgnacio {
     
@@ -432,6 +434,31 @@ public class StudentPaymentSystemIgnacio {
     } 
 }</code></pre>
             </div>
+
+            <div class="terminal-container" style="margin-top: 20px;">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="close"></span>
+                        <span class="minimize"></span>
+                        <span class="maximize"></span>
+                    </div>
+                    <span class="terminal-title" style="color: #f5f5f5;">Terminal</span>
+                </div>
+                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">===== STUDENT INFORMATION =====
+Enter Student Name: China
+Enter Student ID: 2024-02641
+Enter Total Tuition Fee: PHP 10000
+
+===== PAYMENT MENU =====
+1. Pay Tuition
+2. Check Balance
+3. Apply Discount
+4. Exit
+Enter your choice: 2
+
+===== CHECK BALANCE =====
+Remaining Balance: PHP 10000.00</div>
+            </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
                 <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
@@ -451,7 +478,7 @@ public class StudentPaymentSystemIgnacio {
                 parameter passing, and return types, while ensuring expenditures remain within a defined budget.</p>
 
             <div class="code-block">
-                <pre><code>import java.util.Scanner;
+                <pre><code class="language-java">import java.util.Scanner;
 
 public class ExpenseTrackerIgnacio {
     
@@ -618,6 +645,8 @@ public class ExpenseTrackerIgnacio {
     </div>
 
     <script src="../script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
 </body>
 
 </html>
