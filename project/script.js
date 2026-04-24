@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial check
     revealOnScroll();
-    
+
     // Check on scroll
     window.addEventListener('scroll', revealOnScroll);
 
@@ -71,20 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = targetCard.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = ((y - centerY) / centerY) * -5;
             const rotateY = ((x - centerX) / centerX) * 5;
-            
+
             targetCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             targetCard.style.transition = 'transform 0.1s ease';
         }
 
         clearTimeout(mouseTimeout);
         isMouseMoving = true;
-        
+
         mouseTimeout = setTimeout(() => {
             isMouseMoving = false;
             cursorLight.style.opacity = '0';
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let particles = [];
         let isWarpSpeed = false;
         let warpMultiplier = 0;
-        
+
         const resizeCanvas = () => {
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width;
             canvas.height = height;
         };
-        
+
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
@@ -136,16 +136,23 @@ document.addEventListener('DOMContentLoaded', () => {
         let animateBrake = () => {
             let elapsed = Date.now() - startBrakeTime;
             let progress = Math.min(elapsed / brakeDuration, 1);
-            
+
             // Ease out: starts fast, slows down
             let reverseProgress = 1 - progress;
             warpMultiplier = Math.pow(reverseProgress, 3) * 30;
-            
+
             if (progress < 1) {
                 requestAnimationFrame(animateBrake);
             } else {
                 isWarpSpeed = false;
                 warpMultiplier = 0;
+                
+                // Set the current positions as the new base positions 
+                // so they don't rapidly slide back across the screen
+                particles.forEach(p => {
+                    p.baseX = p.x;
+                    p.baseY = p.y;
+                });
             }
         };
         requestAnimationFrame(animateBrake);
@@ -156,25 +163,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const href = link.getAttribute('href');
                 if (href && href.startsWith('#')) return; // ignore smooth scroll links
                 if (href && href.startsWith('mailto')) return;
-                
+
                 // If it's an external or internal page link, do warp speed
                 if (href) {
                     // Only skip if it's linking to the exact same page without a hash
                     if (href === window.location.pathname.split('/').pop()) return;
-                    
+
                     e.preventDefault();
                     isWarpSpeed = true;
-                    
+
                     let startTime = Date.now();
                     let duration = 1000; // time before jumping to next page
-                    
+
                     let animateWarp = () => {
                         let elapsed = Date.now() - startTime;
                         let progress = Math.min(elapsed / duration, 1);
-                        
+
                         // Ease in cubic: t^3
-                        warpMultiplier = Math.pow(progress, 3) * 30; 
-                        
+                        warpMultiplier = Math.pow(progress, 3) * 30;
+
                         if (progress < 1) {
                             requestAnimationFrame(animateWarp);
                         } else {
@@ -212,11 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     let centerY = height / 2;
                     let dx = this.x - centerX;
                     let dy = this.y - centerY;
-                    
+
                     // Apply velocity radially
                     let vx = dx * warpMultiplier * 0.05;
                     let vy = dy * warpMultiplier * 0.05;
-                    
+
                     this.x += vx;
                     this.y += vy;
 
@@ -239,16 +246,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 let maxDistance = 150;
-                
+
                 if (distance < maxDistance && mouse.x != null) {
                     let forceDirectionX = dx / distance;
                     let forceDirectionY = dy / distance;
                     let force = (maxDistance - distance) / maxDistance;
                     let directionX = forceDirectionX * force * this.density;
                     let directionY = forceDirectionY * force * this.density;
-                    
+
                     this.x -= directionX;
                     this.y -= directionY;
                 } else {
@@ -294,25 +301,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Terminal Simulation Logic
     const termInputs = document.querySelectorAll('.term-input');
-    
+
     termInputs.forEach(input => {
         // Enable input
         input.disabled = false;
         input.placeholder = "Type a command and press Enter...";
 
-        input.addEventListener('keypress', function(e) {
+        input.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 const command = this.value.trim();
                 const targetId = this.id.replace('input-', 'term-');
                 const termBody = document.getElementById(targetId);
-                
+
                 if (command) {
                     // Echo command
                     const cmdLine = document.createElement('div');
                     cmdLine.className = 'term-line';
                     cmdLine.innerHTML = `<span style="color: #f5f5f7;">guest@portfolio:~$</span> ${command}`;
                     termBody.appendChild(cmdLine);
-                    
+
                     // Simulate processing (Wait for real logic)
                     const outLine = document.createElement('div');
                     outLine.className = 'term-line output';
@@ -322,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Scroll to bottom
                     termBody.scrollTop = termBody.scrollHeight;
-                    
+
                     // Clear input
                     this.value = '';
                 }
