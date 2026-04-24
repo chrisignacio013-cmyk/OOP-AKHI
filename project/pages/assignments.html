@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterm Assignments — OOP Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Additional styling for inner pages */
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--accent-blue-hover);
+        }
+        .assignment-section {
+            margin-bottom: 60px;
+            background-color: var(--surface-color-glass);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .assignment-section h3 {
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+        }
+        .document-box {
+            background-color: #0d0d0d;
+            padding: 30px;
+            border-radius: 12px;
+            color: #e6e6e6;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Canvas for Stars -->
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CMMI.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#midterm" class="nav-link active">Midterm</a></li>
+                <li><a href="../index.html#final" class="nav-link">Final</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header reveal">
+            <a href="../index.html#midterm" class="back-link">← Back to Portfolio</a>
+            <h1 class="section-title">Midterm Assignments</h1>
+            <p class="section-subtitle">Initial assignments establishing foundational knowledge in Java and Object-Oriented Programming.</p>
+        </div>
+
+        <!-- All About Me -->
+        <div class="assignment-section reveal delay-1">
+            <h3>All About Me</h3>
+            <p><strong>Description:</strong> An introductory assignment to share personal background, interests, and goals for the Object-Oriented Programming course.</p>
+            
+            <div class="document-box">
+                <p><em>(Document Content Attached)</em></p>
+                <p>Hello! My name is Christian Manuel M. Ignacio. I am a BSIT 2-4 student at PUP...</p>
+                <p style="color: var(--text-secondary); margin-top: 20px; font-size: 0.9em;">[Please see the attached document for the full "All About Me" content.]</p>
+            </div>
+        </div>
+
+        <!-- Assignment #1: What is Java? -->
+        <div class="assignment-section reveal delay-2">
+            <h3>Assignment #1: What is Java?</h3>
+            <p><strong>Description:</strong> Research and explanation of Java's core features, history, and why it is widely used in Object-Oriented Programming.</p>
+            
+            <div class="document-box">
+                <p><em>(Document Content Attached)</em></p>
+                <p><strong>Java</strong> is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let programmers write once, run anywhere (WORA)...</p>
+                <p style="color: var(--text-secondary); margin-top: 20px; font-size: 0.9em;">[Please see the attached document for the complete assignment response.]</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
