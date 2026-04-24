@@ -125,6 +125,29 @@ document.addEventListener('DOMContentLoaded', () => {
             mouse.y = null;
         });
 
+        // Brake effect on load (entering the page)
+        isWarpSpeed = true;
+        warpMultiplier = 30;
+        let startBrakeTime = Date.now();
+        let brakeDuration = 1000;
+
+        let animateBrake = () => {
+            let elapsed = Date.now() - startBrakeTime;
+            let progress = Math.min(elapsed / brakeDuration, 1);
+            
+            // Ease out: starts fast, slows down
+            let reverseProgress = 1 - progress;
+            warpMultiplier = Math.pow(reverseProgress, 3) * 30;
+            
+            if (progress < 1) {
+                requestAnimationFrame(animateBrake);
+            } else {
+                isWarpSpeed = false;
+                warpMultiplier = 0;
+            }
+        };
+        requestAnimationFrame(animateBrake);
+
         // Intercept links for warp speed transition
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -137,15 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     isWarpSpeed = true;
                     
-                    // Ramp up warp multiplier
-                    let rampUp = setInterval(() => {
-                        warpMultiplier += 0.5;
-                    }, 20);
-
-                    setTimeout(() => {
-                        clearInterval(rampUp);
-                        window.location.href = href;
-                    }, 600);
+                    let startTime = Date.now();
+                    let duration = 1000; // time before jumping to next page
+                    
+                    let animateWarp = () => {
+                        let elapsed = Date.now() - startTime;
+                        let progress = Math.min(elapsed / duration, 1);
+                        
+                        // Ease in cubic: t^3
+                        warpMultiplier = Math.pow(progress, 3) * 30; 
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animateWarp);
+                        } else {
+                            window.location.href = href;
+                        }
+                    };
+                    requestAnimationFrame(animateWarp);
                 }
             });
         });

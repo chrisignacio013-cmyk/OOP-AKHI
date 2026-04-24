@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
         }
+
         .back-link {
             color: var(--accent-blue);
             text-decoration: none;
@@ -23,9 +25,11 @@
             margin-bottom: 20px;
             font-weight: 500;
         }
+
         .back-link:hover {
             color: var(--accent-blue-hover);
         }
+
         .activity-section {
             margin-bottom: 60px;
             background-color: var(--surface-color-glass);
@@ -33,10 +37,12 @@
             border-radius: 24px;
             border: 1px solid var(--border-color);
         }
+
         .activity-section h3 {
             margin-bottom: 15px;
             color: var(--accent-blue);
         }
+
         .code-block {
             background-color: #0d0d0d;
             padding: 20px;
@@ -49,9 +55,14 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Background Canvas for Stars -->
     <canvas id="bg-canvas"></canvas>
+
+    <!-- Background glow effects -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -69,17 +80,19 @@
         <div class="page-header reveal">
             <a href="../index.html#midterm" class="back-link">← Back to Portfolio</a>
             <h1 class="section-title">Midterm Activities</h1>
-            <p class="section-subtitle">Java programs, code snippets, and explanations demonstrating problem-solving in Object-Oriented Programming.</p>
+            <p class="section-subtitle">Java programs, code snippets, and explanations demonstrating problem-solving in
+                Object-Oriented Programming.</p>
         </div>
 
         <!-- Activity 1 -->
         <div class="activity-section reveal delay-1">
             <h3>Activity #1: Variables</h3>
             <p><strong>Description:</strong> Introduction to Java variables, data types, and basic declarations.</p>
-            
+
             <div class="code-block">
-                <p style="color: var(--text-secondary); font-family: var(--font-family); font-style: italic;">(Document Content Attached - Using Placeholder)</p>
-<pre><code>public class Variables {
+                <p style="color: var(--text-secondary); font-family: var(--font-family); font-style: italic;">(Document
+                    Content Attached - Using Placeholder)</p>
+                <pre><code>public class Variables {
     public static void main(String[] args) {
         // Variable declarations and initialization
         int age = 20;
@@ -94,20 +107,26 @@
     }
 }</code></pre>
             </div>
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">This was my first time actually coding in Java! Declaring variables was a bit confusing at first because I kept forgetting to put the semicolon at the end of the line, and the errors were so scary. But once I got the hang of matching the data types (like using <code>int</code> for my age and <code>String</code> for my name), it started to make sense. Seeing my own details print out on the screen was super satisfying!</p>
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">This was my first time actually coding in
+                    Java. I realized that it's so similar to C programming language that we used last school year for
+                    Computer Programming 1 and 2. There are differences, sure, but I think I can get the hang of it in
+                    no time, hopefully.</p>
             </div>
         </div>
 
         <!-- Activity 2: Operators -->
         <div class="activity-section reveal delay-2">
             <h3>Activity #2: Operators</h3>
-            <p><strong>Description:</strong> Utilizing Bitwise, Ternary, Assignment, Arithmetic, Relational, Logical, and Unary operators in Java.</p>
-            
+            <p><strong>Description:</strong> Utilizing Bitwise, Ternary, Assignment, Arithmetic, Relational, Logical,
+                and Unary operators in Java.</p>
+
             <h4>Part I: Bitwise, Ternary, and Assignment Operators</h4>
             <div class="code-block">
-<pre><code>// Bitwise operators
+                <pre><code>// Bitwise operators
 public class BitwiseOperator {
     public static void main(String[] args) {
         int a = 5;   // 0101
@@ -168,7 +187,7 @@ public class AssignmentOperators {
 
             <h4 style="margin-top: 30px;">Part II: Combining Operators (Tricky cases)</h4>
             <div class="code-block">
-<pre><code>public class Part2 {
+                <pre><code>public class Part2 {
     public static void main(String[] args) {
 
         // 1 - tricky increment (number)
@@ -200,19 +219,27 @@ public class AssignmentOperators {
     }
 }</code></pre>
             </div>
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Oh man, operators were tricky, especially the bitwise and the increment ones. The <code>a++ + ++a</code> part really made my head hurt trying to trace the values on paper. I learned that the computer follows a strict order of operations, just like in math. The ternary operator <code>? :</code> is actually pretty cool though, it's like a shortcut for an if-else statement. I definitely need more practice with these, but getting all 6 outputs right felt like solving a puzzle.</p>
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Operators were tricky, especially the
+                    bitwise and the increment ones. The <code>a++ + ++a</code> part really made my head hurt trying to
+                    trace the values on paper. I learned that the computer follows a strict order of operations, just
+                    like in math. The ternary operator <code>? :</code> is actually pretty cool though, it's like a
+                    shortcut for an if-else statement. I definitely need more practice with these, but getting all 6
+                    outputs right felt like solving a puzzle.</p>
             </div>
         </div>
 
         <!-- Activity 3: ATM -->
         <div class="activity-section reveal delay-3">
             <h3>Activity #3: ATM with Transfer Features</h3>
-            <p><strong>Description:</strong> A Java program enforcing withdrawal limits and simulating basic ATM operations using <code>Scanner</code>, conditional statements, and loops.</p>
-            
+            <p><strong>Description:</strong> A Java program enforcing withdrawal limits and simulating basic ATM
+                operations using <code>Scanner</code>, conditional statements, and loops.</p>
+
             <div class="code-block">
-<pre><code>import java.util.Scanner;
+                <pre><code>import java.util.Scanner;
 
 public class ATMWithdrawalLimit {
     public static void main(String[] args) {
@@ -264,19 +291,27 @@ public class ATMWithdrawalLimit {
     }
 }</code></pre>
             </div>
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">This activity was so much fun because it felt like I was building a real app! I used a <code>do-while</code> loop for the first time to make the menu keep showing up until the user chooses to exit. Figuring out the logic for the withdrawal limit and checking if the balance was enough took me a few tries. I got a bunch of errors when I forgot to close the Scanner, but eventually, I got it working perfectly.</p>
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">This activity was so much fun because it
+                    felt like I was building a real app. I used a do-while loop since it's what I always use back when I
+                    was using C language to make the menu keep showing up until the user chooses to exit. Figuring out
+                    the logic for the withdrawal limit and checking if the balance was enough took me a few tries. I got
+                    a bunch of errors when I forgot to close the Scanner, but eventually, I got it working perfectly.
+                </p>
             </div>
         </div>
 
         <!-- Activity 4 -->
         <div class="activity-section reveal delay-4">
             <h3>Activity #4: Student Payment System with Validation Counter</h3>
-            <p><strong>Description:</strong> A Java program simulating a student payment system using decision structures, loops, and user-defined validation to track tuition, discounts, and balances.</p>
-            
+            <p><strong>Description:</strong> A Java program simulating a student payment system using decision
+                structures, loops, and user-defined validation to track tuition, discounts, and balances.</p>
+
             <div class="code-block">
-<pre><code>import java.util.Scanner;
+                <pre><code>import java.util.Scanner;
 
 public class StudentPaymentSystemIgnacio {
     
@@ -381,19 +416,26 @@ public class StudentPaymentSystemIgnacio {
     } 
 }</code></pre>
             </div>
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">This one was a step up from the ATM activity. Adding a counter for transactions and making sure the discount was only applied once for scholars was a bit challenging. I had to use nested <code>if</code> statements inside the <code>switch</code> cases. It really showed me how important it is to plan the logic before typing. I felt really proud when the final summary printed out all the correct details!</p>
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">This one was a step up from the ATM
+                    activity. Adding a counter for transactions and making sure the discount was only applied once for
+                    scholars was a bit challenging. I had to use nested if statements inside the switch cases. It really
+                    showed me how important it is to plan the logic before typing. I felt really proud when the final
+                    summary printed out all the correct details.</p>
             </div>
         </div>
 
         <!-- Activity 5 -->
         <div class="activity-section reveal delay-1">
             <h3>Activity #5: Personal Tracker</h3>
-            <p><strong>Description:</strong> A program designed to track personal expenses using multiple methods, parameter passing, and return types, while ensuring expenditures remain within a defined budget.</p>
-            
+            <p><strong>Description:</strong> A program designed to track personal expenses using multiple methods,
+                parameter passing, and return types, while ensuring expenditures remain within a defined budget.</p>
+
             <div class="code-block">
-<pre><code>import java.util.Scanner;
+                <pre><code>import java.util.Scanner;
 
 public class ExpenseTrackerIgnacio {
     
@@ -545,9 +587,15 @@ public class ExpenseTrackerIgnacio {
         }
 }</code></pre>
             </div>
-            <div class="reflection-box" style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
-                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection</h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Methods are amazing! Before this, all my code was just jammed into the <code>main</code> block, which made it super messy. Breaking the program into smaller pieces like <code>calculateTotalExpenses()</code> and <code>budgetTracker()</code> made it so much easier to read and debug. Passing parameters still confuses me a little bit, but I see why it's so useful. This tracker is something I might actually use to monitor my allowance!</p>
+            <div class="reflection-box"
+                style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Back when I was studying C, I always use
+                    functions to organize my programs. And I just figured out that Method is just another term for
+                    Function. Methods are cool because before this, all my code was just jammed into the main block,
+                    which made it super messy. Breaking the program into smaller pieces like calculateTotalExpenses()
+                    and budgetTracker() made it so much easier to read and debug. </p>
             </div>
         </div>
 
@@ -555,4 +603,5 @@ public class ExpenseTrackerIgnacio {
 
     <script src="../script.js"></script>
 </body>
+
 </html>
