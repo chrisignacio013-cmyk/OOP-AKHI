@@ -37,18 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-link');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        // Animate hamburger
-        hamburger.classList.toggle('toggle');
-    });
-
-    // Close mobile menu on link click
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Animate hamburger
+            hamburger.classList.toggle('toggle');
         });
-    });
+
+        // Close mobile menu on link click
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 
     // Mouse cursor light effect
     const cursorLight = document.createElement('div');
