@@ -254,11 +254,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (this.x !== this.baseX) {
                         let dx = this.x - this.baseX;
-                        this.x -= dx / 50;
+                        let speed = dx / 20;
+                        let maxSpeed = 1.5;
+                        if (speed > maxSpeed) speed = maxSpeed;
+                        if (speed < -maxSpeed) speed = -maxSpeed;
+                        this.x -= speed;
                     }
                     if (this.y !== this.baseY) {
                         let dy = this.y - this.baseY;
-                        this.y -= dy / 50;
+                        let speed = dy / 20;
+                        let maxSpeed = 1.5;
+                        if (speed > maxSpeed) speed = maxSpeed;
+                        if (speed < -maxSpeed) speed = -maxSpeed;
+                        this.y -= speed;
                     }
                 }
                 this.draw();
