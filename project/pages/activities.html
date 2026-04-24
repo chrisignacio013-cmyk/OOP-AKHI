@@ -44,7 +44,8 @@
         }
 
         .code-block {
-            background-color: #0d0d0d;
+            background-color: rgba(13, 13, 13, 0.4);
+            backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 12px;
             overflow-x: auto;
@@ -52,6 +53,11 @@
             color: #e6e6e6;
             margin: 20px 0;
             border: 1px solid var(--border-color);
+        }
+        pre[class*="language-"] {
+            background: transparent !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .media-gallery {
@@ -200,6 +206,29 @@ public class AssignmentOperators {
 }</code></pre>
             </div>
 
+            <div class="terminal-container" style="margin-top: 20px;">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="close"></span>
+                        <span class="minimize"></span>
+                        <span class="maximize"></span>
+                    </div>
+                    <span class="terminal-title" style="color: #f5f5f5;">Output</span>
+                </div>
+                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">true
+10
+false
+15
+true
+false
+25
+0
+Addition: 120
+Subtraction: 70
+Multiplication: 144
+Division: 16</div>
+            </div>
+
             <h4 style="margin-top: 30px;">Part II: Combining Operators (Tricky cases)</h4>
             <div class="code-block">
                 <pre><code class="language-java">public class Part2 {
@@ -308,6 +337,42 @@ public class ATMWithdrawalLimit {
       }
     }
 }</code></pre>
+            </div>
+
+            <div class="terminal-container" style="margin-top: 20px;">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="close"></span>
+                        <span class="minimize"></span>
+                        <span class="maximize"></span>
+                    </div>
+                    <span class="terminal-title" style="color: #f5f5f5;">Output</span>
+                </div>
+                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+=== ATM MENU ===
+1. Check Balance
+2. Deposit
+3. Withdraw
+4. Exit
+Enter your choice: 1
+Your current balance is: 9000
+
+=== ATM MENU ===
+1. Check Balance
+2. Deposit
+3. Withdraw
+4. Exit
+Enter your choice: 3
+Enter the amount to withdraw: 2000
+Withdrawal successful. Your new balance is: 7000
+
+=== ATM MENU ===
+1. Check Balance
+2. Deposit
+3. Withdraw
+4. Exit
+Enter your choice: 4
+Thank you for using the ATM. Goodbye!</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
@@ -442,7 +507,7 @@ public class StudentPaymentSystemIgnacio {
                         <span class="minimize"></span>
                         <span class="maximize"></span>
                     </div>
-                    <span class="terminal-title" style="color: #f5f5f5;">Terminal</span>
+                    <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
                 <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">===== STUDENT INFORMATION =====
 Enter Student Name: China
@@ -629,6 +694,66 @@ public class ExpenseTrackerIgnacio {
          }
         }
 }</code></pre>
+            </div>
+
+            <div class="terminal-container" style="margin-top: 20px;">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="close"></span>
+                        <span class="minimize"></span>
+                        <span class="maximize"></span>
+                    </div>
+                    <span class="terminal-title" style="color: #f5f5f5;">Output</span>
+                </div>
+                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">=== Welcome to the Expense Tracker! ===
+This program helps you track your expenses
+and manage your budget effectively.
+
+Enter your monthly budget: 5000
+
+=== Main Menu ===
+1. Add an Expense
+2. Budget Tracker
+3. View Total Expenses
+4. Exit
+Enter your choice: 1
+
+Select Expense Category:
+1. Food
+2. Transportation
+3. School
+4. Entertainment
+5. Other
+Enter your choice: 1
+Enter the expense amount: 1500
+Food Expense: 1500.0
+
+=== Main Menu ===
+1. Add an Expense
+2. Budget Tracker
+3. View Total Expenses
+4. Exit
+Enter your choice: 3
+
+=== Total Expenses ===
+
+Food: 1500.0
+Transportation: 0.0
+School: 0.0
+Entertainment: 0.0
+Other: 0.0
+
+Your total expenses so far is: 1500.0
+Remaining budget: 3500.0
+
+=== Main Menu ===
+1. Add an Expense
+2. Budget Tracker
+3. View Total Expenses
+4. Exit
+Enter your choice: 4
+
+Thank you for using the Expense Tracker. Goodbye!</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
