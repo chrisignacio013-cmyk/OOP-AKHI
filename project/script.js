@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
+        let isWarpSpeed = false;
+        let warpMultiplier = 0;
         
         const resizeCanvas = () => {
             width = window.innerWidth;
@@ -123,6 +125,31 @@ document.addEventListener('DOMContentLoaded', () => {
             mouse.y = null;
         });
 
+        // Intercept links for warp speed transition
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) return; // ignore smooth scroll links
+                if (href && href.startsWith('mailto')) return;
+                
+                // If it's an external or internal page link, do warp speed
+                if (href && !link.classList.contains('active')) {
+                    e.preventDefault();
+                    isWarpSpeed = true;
+                    
+                    // Ramp up warp multiplier
+                    let rampUp = setInterval(() => {
+                        warpMultiplier += 0.5;
+                    }, 20);
+
+                    setTimeout(() => {
+                        clearInterval(rampUp);
+                        window.location.href = href;
+                    }, 600);
+                }
+            });
+        });
+
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -132,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
                 this.alpha = Math.random() * 0.5 + 0.1;
+                this.z = Math.random() * width; // depth for warp speed
             }
 
             draw() {
@@ -143,6 +171,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             update() {
+                if (isWarpSpeed) {
+                    let centerX = width / 2;
+                    let centerY = height / 2;
+                    let dx = this.x - centerX;
+                    let dy = this.y - centerY;
+                    
+                    // Apply velocity radially
+                    let vx = dx * warpMultiplier * 0.05;
+                    let vy = dy * warpMultiplier * 0.05;
+                    
+                    this.x += vx;
+                    this.y += vy;
+
+                    // Draw line stretching out
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                    ctx.lineWidth = this.size;
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(this.x - vx * 2, this.y - vy * 2);
+                    ctx.stroke();
+
+                    // reset if it goes off screen
+                    if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                        this.x = centerX + (Math.random() - 0.5) * 10;
+                        this.y = centerY + (Math.random() - 0.5) * 10;
+                    }
+                    return;
+                }
+
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
@@ -181,7 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const animateParticles = () => {
-            ctx.clearRect(0, 0, width, height);
+            if (isWarpSpeed) {
+                // leave trails by using a semi-transparent fill
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                ctx.fillRect(0, 0, width, height);
+            } else {
+                ctx.clearRect(0, 0, width, height);
+            }
+
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
             }
@@ -191,4 +255,42 @@ document.addEventListener('DOMContentLoaded', () => {
         initParticles();
         animateParticles();
     }
+
+    // Terminal Simulation Logic
+    const termInputs = document.querySelectorAll('.term-input');
+    
+    termInputs.forEach(input => {
+        // Enable input
+        input.disabled = false;
+        input.placeholder = "Type a command and press Enter...";
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim();
+                const targetId = this.id.replace('input-', 'term-');
+                const termBody = document.getElementById(targetId);
+                
+                if (command) {
+                    // Echo command
+                    const cmdLine = document.createElement('div');
+                    cmdLine.className = 'term-line';
+                    cmdLine.innerHTML = `<span style="color: #f5f5f7;">guest@portfolio:~$</span> ${command}`;
+                    termBody.appendChild(cmdLine);
+                    
+                    // Simulate processing (Wait for real logic)
+                    const outLine = document.createElement('div');
+                    outLine.className = 'term-line output';
+                    outLine.style.color = '#00ff00';
+                    outLine.textContent = `Processing: ${command} ... (Awaiting Java logic implementation)`;
+                    termBody.appendChild(outLine);
+
+                    // Scroll to bottom
+                    termBody.scrollTop = termBody.scrollHeight;
+                    
+                    // Clear input
+                    this.value = '';
+                }
+            }
+        });
+    });
 });
