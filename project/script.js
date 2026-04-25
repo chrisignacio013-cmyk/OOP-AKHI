@@ -204,13 +204,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.sparkTimer = 0;          // counts down while sparking
                 this.sparkDuration = 0;       // total duration of this spark
                 // Initial offset so some start immediately, spread across the full interval
-                this.nextSpark = Math.floor(Math.random() * 21600);
+                this.nextSpark = Math.floor(Math.random() * 43200);
                 this.sparkAngle = 0;          // rotation angle for tilt effect
             }
 
             _randNextSpark() {
-                // trigger a spark roughly every 3–6 minutes at 60fps
-                return Math.floor(Math.random() * 10800 + 10800);
+                // trigger a spark roughly every 6–12 minutes at 60fps
+                // this results in ~5 sparkles every 10 seconds on standard screens
+                return Math.floor(Math.random() * 21600 + 21600);
             }
 
             draw() {
