@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseX = this.x;
                 this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
-                this.alpha = Math.random() * 0.5 + 0.1;
+                this.alpha = Math.random() * 0.6 + 0.4;
                 this.z = Math.random() * width; // depth for warp speed
                 // random drift speed for dust-like floating
                 this.driftX = (Math.random() - 0.5) * 0.4;
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Constantly update base positions for a slow drift effect
                 this.baseX += this.driftX;
                 this.baseY += this.driftY;
-                
+
                 // Wrap around edges to maintain continuous starfield
                 if (this.baseX < 0) this.baseX = width;
                 if (this.baseX > width) this.baseX = 0;
