@@ -233,13 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const innerR = outerR * 0.07; // very thin waist = sparkle look
 
                         // Soft radial glow bloom (no rotation needed)
-                        const glowR = outerR * 1.8;
+                        const glowR = outerR * 3.5;
                         const grd = ctx.createRadialGradient(
                             this.x, this.y, 0,
                             this.x, this.y, glowR
                         );
-                        grd.addColorStop(0, `rgba(255, 255, 255, ${(a * 0.35).toFixed(3)})`);
-                        grd.addColorStop(0.4, `rgba(200, 220, 255, ${(a * 0.12).toFixed(3)})`);
+                        grd.addColorStop(0, `rgba(255, 255, 255, ${(a * 0.25).toFixed(3)})`);
+                        grd.addColorStop(0.3, `rgba(200, 220, 255, ${(a * 0.08).toFixed(3)})`);
+                        grd.addColorStop(0.7, `rgba(200, 220, 255, ${(a * 0.02).toFixed(3)})`);
                         grd.addColorStop(1, 'rgba(255, 255, 255, 0)');
                         ctx.fillStyle = grd;
                         ctx.beginPath();
