@@ -194,22 +194,78 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseX = this.x;
                 this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
-                this.alpha = Math.random() * 0.6 + 0.4;
+                this.baseAlpha = Math.random() * 0.4 + 0.6; // brighter base
+                this.alpha = this.baseAlpha;
                 this.z = Math.random() * width; // depth for warp speed
                 // random drift speed for dust-like floating
                 this.driftX = (Math.random() - 0.5) * 0.4;
                 this.driftY = (Math.random() - 0.5) * 0.4;
+                // Spark state
+                this.sparkTimer = 0;          // counts down while sparking
+                this.sparkDuration = 0;       // total duration of this spark
+                this.nextSpark = this._randNextSpark(); // frames until next spark
+            }
+
+            _randNextSpark() {
+                // trigger a spark roughly every 3–12 seconds at 60fps
+                return Math.floor(Math.random() * 420 + 180);
             }
 
             draw() {
+                // Always draw the core sphere
                 ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.fill();
+
+                // If sparking, draw cross spikes on top
+                if (this.sparkTimer > 0) {
+                    // progress: 0→1 flash in, 1→0 fade out (peak at halfway)
+                    const t = this.sparkTimer / this.sparkDuration;
+                    // Triangle wave: peaks at 0.5
+                    const peakT = 1 - Math.abs(t - 0.5) * 2;
+                    const spikeAlpha = peakT;
+                    const spikeLen = this.size * 6 * peakT;
+
+                    ctx.save();
+                    ctx.globalAlpha = spikeAlpha * 0.9;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
+                    ctx.lineWidth = this.size * 0.35;
+                    ctx.lineCap = 'round';
+                    // Horizontal
+                    ctx.beginPath();
+                    ctx.moveTo(this.x - spikeLen, this.y);
+                    ctx.lineTo(this.x + spikeLen, this.y);
+                    ctx.stroke();
+                    // Vertical
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y - spikeLen);
+                    ctx.lineTo(this.x, this.y + spikeLen);
+                    ctx.stroke();
+                    ctx.restore();
+                }
             }
 
             update() {
+                // Spark countdown logic
+                if (this.sparkTimer > 0) {
+                    this.sparkTimer--;
+                    // Briefly boost brightness at the flash peak
+                    const t = this.sparkTimer / this.sparkDuration;
+                    const peakT = 1 - Math.abs(t - 0.5) * 2;
+                    this.alpha = Math.min(1, this.baseAlpha + peakT * 0.4);
+                } else {
+                    this.alpha = this.baseAlpha;
+                    this.nextSpark--;
+                    if (this.nextSpark <= 0) {
+                        // Trigger a new spark
+                        this.sparkDuration = Math.floor(Math.random() * 30 + 20); // 20-50 frames
+                        this.sparkTimer = this.sparkDuration;
+                        this.nextSpark = this._randNextSpark();
+                    }
+                }
+
                 // Constantly update base positions for a slow drift effect
                 this.baseX += this.driftX;
                 this.baseY += this.driftY;
@@ -267,16 +323,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (this.x !== this.baseX) {
                         let dx = this.x - this.baseX;
-                        let speed = dx / 20;
-                        let maxSpeed = 1.5;
+                        let speed = dx / 8;
+                        let maxSpeed = 3;
                         if (speed > maxSpeed) speed = maxSpeed;
                         if (speed < -maxSpeed) speed = -maxSpeed;
                         this.x -= speed;
                     }
                     if (this.y !== this.baseY) {
                         let dy = this.y - this.baseY;
-                        let speed = dy / 20;
-                        let maxSpeed = 1.5;
+                        let speed = dy / 8;
+                        let maxSpeed = 3;
                         if (speed > maxSpeed) speed = maxSpeed;
                         if (speed < -maxSpeed) speed = -maxSpeed;
                         this.y -= speed;
