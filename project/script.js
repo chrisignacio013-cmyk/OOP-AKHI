@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             _randNextSpark() {
-                // trigger a spark roughly every 60–120 seconds at 60fps
-                return Math.floor(Math.random() * 3600 + 3600);
+                // trigger a spark roughly every 3–6 minutes at 60fps
+                return Math.floor(Math.random() * 10800 + 10800);
             }
 
             draw() {
@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.alpha = this.baseAlpha;
                     this.nextSpark--;
                     if (this.nextSpark <= 0) {
-                        // Trigger a new spark — slow: 3–5 seconds
-                        this.sparkDuration = Math.floor(Math.random() * 120 + 180); // 180-300 frames
+                        // Trigger a new spark — very slow: 8–14 seconds
+                        this.sparkDuration = Math.floor(Math.random() * 360 + 480); // 480-840 frames
                         this.sparkTimer = this.sparkDuration;
                         this.nextSpark = this._randNextSpark();
                     }
