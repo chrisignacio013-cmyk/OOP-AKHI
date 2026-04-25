@@ -203,7 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Spark state
                 this.sparkTimer = 0;          // counts down while sparking
                 this.sparkDuration = 0;       // total duration of this spark
-                this.nextSpark = this._randNextSpark(); // frames until next spark
+                // Initial offset so some start immediately, spread across the full interval
+                this.nextSpark = Math.floor(Math.random() * 21600);
                 this.sparkAngle = 0;          // rotation angle for tilt effect
             }
 
