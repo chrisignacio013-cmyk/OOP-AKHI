@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             _randNextSpark() {
-                // trigger a spark roughly every 15–40 seconds at 60fps
-                return Math.floor(Math.random() * 1500 + 900);
+                // trigger a spark roughly every 60–120 seconds at 60fps
+                return Math.floor(Math.random() * 3600 + 3600);
             }
 
             draw() {
