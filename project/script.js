@@ -204,11 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.sparkTimer = 0;          // counts down while sparking
                 this.sparkDuration = 0;       // total duration of this spark
                 this.nextSpark = this._randNextSpark(); // frames until next spark
+                this.sparkAngle = 0;          // rotation angle for tilt effect
             }
 
             _randNextSpark() {
-                // trigger a spark roughly every 3–12 seconds at 60fps
-                return Math.floor(Math.random() * 420 + 180);
+                // trigger a spark roughly every 15–40 seconds at 60fps
+                return Math.floor(Math.random() * 1500 + 900);
             }
 
             draw() {
@@ -219,31 +220,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.closePath();
                 ctx.fill();
 
-                // If sparking, draw cross spikes on top
+                // If sparking, draw a 4-pointed sparkle star
                 if (this.sparkTimer > 0) {
-                    // progress: 0→1 flash in, 1→0 fade out (peak at halfway)
                     const t = this.sparkTimer / this.sparkDuration;
-                    // Triangle wave: peaks at 0.5
-                    const peakT = 1 - Math.abs(t - 0.5) * 2;
-                    const spikeAlpha = peakT;
-                    const spikeLen = this.size * 6 * peakT;
+                    // Smooth ease-in-out bell curve peaking at midpoint
+                    const peakT = Math.sin(t * Math.PI);
+                    const a = peakT;
 
-                    ctx.save();
-                    ctx.globalAlpha = spikeAlpha * 0.9;
-                    ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-                    ctx.lineWidth = this.size * 0.35;
-                    ctx.lineCap = 'round';
-                    // Horizontal
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - spikeLen, this.y);
-                    ctx.lineTo(this.x + spikeLen, this.y);
-                    ctx.stroke();
-                    // Vertical
-                    ctx.beginPath();
-                    ctx.moveTo(this.x, this.y - spikeLen);
-                    ctx.lineTo(this.x, this.y + spikeLen);
-                    ctx.stroke();
-                    ctx.restore();
+                    if (a > 0.01) {
+                        const outerR = this.size * 10 * a;
+                        const innerR = outerR * 0.07; // very thin waist = sparkle look
+
+                        // Soft radial glow bloom (no rotation needed)
+                        const glowR = outerR * 1.8;
+                        const grd = ctx.createRadialGradient(
+                            this.x, this.y, 0,
+                            this.x, this.y, glowR
+                        );
+                        grd.addColorStop(0, `rgba(255, 255, 255, ${(a * 0.35).toFixed(3)})`);
+                        grd.addColorStop(0.4, `rgba(200, 220, 255, ${(a * 0.12).toFixed(3)})`);
+                        grd.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                        ctx.fillStyle = grd;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, glowR, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // 4-pointed star with slow rotation tilt
+                        ctx.save();
+                        ctx.globalAlpha = a;
+                        ctx.translate(this.x, this.y);
+                        ctx.rotate(this.sparkAngle); // slow tilt
+                        ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+                        ctx.beginPath();
+                        for (let i = 0; i < 8; i++) {
+                            // Start pointing up (-PI/2), rotate by 45° each step
+                            const angle = (i * Math.PI) / 4 - Math.PI / 2;
+                            const r = i % 2 === 0 ? outerR : innerR;
+                            const px = Math.cos(angle) * r;
+                            const py = Math.sin(angle) * r;
+                            if (i === 0) ctx.moveTo(px, py);
+                            else ctx.lineTo(px, py);
+                        }
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.restore();
+                    }
                 }
             }
 
@@ -251,16 +272,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Spark countdown logic
                 if (this.sparkTimer > 0) {
                     this.sparkTimer--;
-                    // Briefly boost brightness at the flash peak
+                    // Boost brightness in sync with the sparkle peak
                     const t = this.sparkTimer / this.sparkDuration;
-                    const peakT = 1 - Math.abs(t - 0.5) * 2;
+                    const peakT = Math.sin(t * Math.PI);
                     this.alpha = Math.min(1, this.baseAlpha + peakT * 0.4);
+                    // Slowly tilt the star — ~45° total over the spark lifetime
+                    this.sparkAngle += (Math.PI / 4) / this.sparkDuration;
                 } else {
                     this.alpha = this.baseAlpha;
                     this.nextSpark--;
                     if (this.nextSpark <= 0) {
-                        // Trigger a new spark
-                        this.sparkDuration = Math.floor(Math.random() * 60 + 90); // 90-150 frames (~1.5-2.5s)
+                        // Trigger a new spark — slow: 3–5 seconds
+                        this.sparkDuration = Math.floor(Math.random() * 120 + 180); // 180-300 frames
                         this.sparkTimer = this.sparkDuration;
                         this.nextSpark = this._randNextSpark();
                     }
