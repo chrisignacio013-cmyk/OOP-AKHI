@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.nextSpark--;
                     if (this.nextSpark <= 0) {
                         // Trigger a new spark
-                        this.sparkDuration = Math.floor(Math.random() * 30 + 20); // 20-50 frames
+                        this.sparkDuration = Math.floor(Math.random() * 60 + 90); // 90-150 frames (~1.5-2.5s)
                         this.sparkTimer = this.sparkDuration;
                         this.nextSpark = this._randNextSpark();
                     }

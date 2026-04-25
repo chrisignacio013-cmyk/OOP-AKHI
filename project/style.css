@@ -603,3 +603,9 @@ footer {
 .term-input::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
+
+/* Grade display */
+.grade-line {
+    color: #30d158;
+    font-weight: 600;
+}

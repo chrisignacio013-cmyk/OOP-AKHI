@@ -54,6 +54,7 @@
             margin: 20px 0;
             border: 1px solid var(--border-color);
         }
+
         pre[class*="language-"] {
             background: transparent !important;
             margin: 0 !important;
@@ -121,7 +122,7 @@
         <div class="activity-section reveal delay-1">
             <h3>Activity #1: Variables</h3>
             <p><strong>Description:</strong> Introduction to Java variables, data types, and basic declarations.</p>
-            <p><strong>Grade:</strong> 27/30 pts</p>
+            <p class="grade-line"><strong>Grade:</strong> 27/30 pts</p>
 
             <div class="media-gallery" style="margin-top: 20px;">
                 <img src="../media/activity1-handwritten.png" alt="Activity 1 Handwritten Work — Part A" loading="lazy">
@@ -138,16 +139,25 @@
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">John 95
-Ana 90
-Ana 90</div>
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    John 95
+                    Ana 90
+                    Ana 90</div>
             </div>
 
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
                 <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.1rem;">Learnings & Reflection
                 </h4>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Completing this activity really solidified my understanding of how Java handles memory, especially the difference between primitive data types and reference variables. When tracing the code step-by-step, it was fascinating to see that assigning <code>s3 = s2</code> didn't create a new object, but instead just pointed another reference to the same memory location in the heap. That completely explained why modifying <code>s3</code> also changed <code>s2</code>! Writing out the tables helped me visualize the behind-the-scenes mechanics of Object-Oriented Programming and how variables behave differently based on their types.</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Completing this activity really solidified
+                    my understanding of how Java handles memory, especially the difference between primitive data types
+                    and reference variables. When tracing the code step-by-step, it was fascinating to see that
+                    assigning <code>s3 = s2</code> didn't create a new object, but instead just pointed another
+                    reference to the same memory location in the heap. That completely explained why modifying
+                    <code>s3</code> also changed <code>s2</code>! Writing out the tables helped me visualize the
+                    behind-the-scenes mechanics of Object-Oriented Programming and how variables behave differently
+                    based on their types.</p>
             </div>
         </div>
 
@@ -156,7 +166,7 @@ Ana 90</div>
             <h3>Activity #2: Operators</h3>
             <p><strong>Description:</strong> Utilizing Bitwise, Ternary, Assignment, Arithmetic, Relational, Logical,
                 and Unary operators in Java.</p>
-            <p><strong>Grade:</strong> 30/30 pts</p>
+            <p class="grade-line"><strong>Grade:</strong> 30/30 pts</p>
 
             <h4>Part I: Bitwise, Ternary, and Assignment Operators</h4>
             <div class="code-block">
@@ -228,18 +238,20 @@ public class AssignmentOperators {
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">true
-10
-false
-15
-true
-false
-25
-0
-Addition: 120
-Subtraction: 70
-Multiplication: 144
-Division: 16</div>
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    true
+                    10
+                    false
+                    15
+                    true
+                    false
+                    25
+                    0
+                    Addition: 120
+                    Subtraction: 70
+                    Multiplication: 144
+                    Division: 16</div>
             </div>
 
             <h4 style="margin-top: 30px;">Part II: Combining Operators (Tricky cases)</h4>
@@ -286,12 +298,14 @@ Division: 16</div>
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">6
-5
-true
-false
-15
-12</div>
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    6
+                    5
+                    true
+                    false
+                    15
+                    12</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
@@ -314,7 +328,7 @@ false
             <h3>Activity #3: ATM with Transfer Features</h3>
             <p><strong>Description:</strong> A Java program enforcing withdrawal limits and simulating basic ATM
                 operations using <code>Scanner</code>, conditional statements, and loops.</p>
-            <p><strong>Grade:</strong> 27/30 pts</p>
+            <p class="grade-line"><strong>Grade:</strong> 27/30 pts</p>
 
             <div class="code-block">
                 <pre><code class="language-java">import java.util.Scanner;
@@ -379,31 +393,32 @@ public class ATMWithdrawalLimit {
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
-=== ATM MENU ===
-1. Check Balance
-2. Deposit
-3. Withdraw
-4. Exit
-Enter your choice: 1
-Your current balance is: 9000
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    === ATM MENU ===
+                    1. Check Balance
+                    2. Deposit
+                    3. Withdraw
+                    4. Exit
+                    Enter your choice: 1
+                    Your current balance is: 9000
 
-=== ATM MENU ===
-1. Check Balance
-2. Deposit
-3. Withdraw
-4. Exit
-Enter your choice: 3
-Enter the amount to withdraw: 2000
-Withdrawal successful. Your new balance is: 7000
+                    === ATM MENU ===
+                    1. Check Balance
+                    2. Deposit
+                    3. Withdraw
+                    4. Exit
+                    Enter your choice: 3
+                    Enter the amount to withdraw: 2000
+                    Withdrawal successful. Your new balance is: 7000
 
-=== ATM MENU ===
-1. Check Balance
-2. Deposit
-3. Withdraw
-4. Exit
-Enter your choice: 4
-Thank you for using the ATM. Goodbye!</div>
+                    === ATM MENU ===
+                    1. Check Balance
+                    2. Deposit
+                    3. Withdraw
+                    4. Exit
+                    Enter your choice: 4
+                    Thank you for using the ATM. Goodbye!</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
@@ -423,7 +438,7 @@ Thank you for using the ATM. Goodbye!</div>
             <h3>Activity #4: Student Payment System with Validation Counter</h3>
             <p><strong>Description:</strong> A Java program simulating a student payment system using decision
                 structures, loops, and user-defined validation to track tuition, discounts, and balances.</p>
-            <p><strong>Grade:</strong> 27/30 pts</p>
+            <p class="grade-line"><strong>Grade:</strong> 27/30 pts</p>
 
             <div class="code-block">
                 <pre><code class="language-java">import java.util.Scanner;
@@ -541,45 +556,47 @@ public class StudentPaymentSystemIgnacio {
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">Enter your Name: Christian Ignacio
-Enter your Student ID: 2024-02641
-Enter Total Tuition Fee: 15000
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    Enter your Name: Christian Ignacio
+                    Enter your Student ID: 2024-02641
+                    Enter Total Tuition Fee: 15000
 
-=== PAYMENT MENU ===
-1. Pay Tuition
-2. Check Balance
-3. Apply Discount
-4. Exit
-Enter your choice: 3
-Select Student Type:
-1. Regular Student
-2. Scholar Student
-Enter your choice: 2
-Discount applied. Your new balance is: 12000
+                    === PAYMENT MENU ===
+                    1. Pay Tuition
+                    2. Check Balance
+                    3. Apply Discount
+                    4. Exit
+                    Enter your choice: 3
+                    Select Student Type:
+                    1. Regular Student
+                    2. Scholar Student
+                    Enter your choice: 2
+                    Discount applied. Your new balance is: 12000
 
-=== PAYMENT MENU ===
-1. Pay Tuition
-2. Check Balance
-3. Apply Discount
-4. Exit
-Enter your choice: 1
-Enter the amount to pay: 2000
-Payment successful. Remaining balance: 10000
+                    === PAYMENT MENU ===
+                    1. Pay Tuition
+                    2. Check Balance
+                    3. Apply Discount
+                    4. Exit
+                    Enter your choice: 1
+                    Enter the amount to pay: 2000
+                    Payment successful. Remaining balance: 10000
 
-=== PAYMENT MENU ===
-1. Pay Tuition
-2. Check Balance
-3. Apply Discount
-4. Exit
-Enter your choice: 4
+                    === PAYMENT MENU ===
+                    1. Pay Tuition
+                    2. Check Balance
+                    3. Apply Discount
+                    4. Exit
+                    Enter your choice: 4
 
-=== Transaction Summary: ===
-Student Name: Christian Ignacio
-Student ID: 2024-02641
-Total Transactions: 2
-Final Balance: 10000
+                    === Transaction Summary: ===
+                    Student Name: Christian Ignacio
+                    Student ID: 2024-02641
+                    Total Transactions: 2
+                    Final Balance: 10000
 
-Thank you for using the Student Payment System. Goodbye!</div>
+                    Thank you for using the Student Payment System. Goodbye!</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
@@ -598,7 +615,7 @@ Thank you for using the Student Payment System. Goodbye!</div>
             <h3>Activity #5: Personal Tracker</h3>
             <p><strong>Description:</strong> A program designed to track personal expenses using multiple methods,
                 parameter passing, and return types, while ensuring expenditures remain within a defined budget.</p>
-            <p><strong>Grade:</strong> 27/30 pts</p>
+            <p class="grade-line"><strong>Grade:</strong> 27/30 pts</p>
 
             <div class="code-block">
                 <pre><code class="language-java">import java.util.Scanner;
@@ -763,55 +780,57 @@ public class ExpenseTrackerIgnacio {
                     </div>
                     <span class="terminal-title" style="color: #f5f5f5;">Output</span>
                 </div>
-                <div class="terminal-body" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">=== Welcome to the Expense Tracker! ===
-This program helps you track your expenses
-and manage your budget effectively.
+                <div class="terminal-body"
+                    style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; color: #a6e22e; background: #0d0d0d; padding: 20px; border-radius: 0 0 12px 12px;">
+                    === Welcome to the Expense Tracker! ===
+                    This program helps you track your expenses
+                    and manage your budget effectively.
 
-Enter your monthly budget: 5000
+                    Enter your monthly budget: 5000
 
-=== Main Menu ===
-1. Add an Expense
-2. Budget Tracker
-3. View Total Expenses
-4. Exit
-Enter your choice: 1
+                    === Main Menu ===
+                    1. Add an Expense
+                    2. Budget Tracker
+                    3. View Total Expenses
+                    4. Exit
+                    Enter your choice: 1
 
-Select Expense Category:
-1. Food
-2. Transportation
-3. School
-4. Entertainment
-5. Other
-Enter your choice: 1
-Enter the expense amount: 1500
-Food Expense: 1500.0
+                    Select Expense Category:
+                    1. Food
+                    2. Transportation
+                    3. School
+                    4. Entertainment
+                    5. Other
+                    Enter your choice: 1
+                    Enter the expense amount: 1500
+                    Food Expense: 1500.0
 
-=== Main Menu ===
-1. Add an Expense
-2. Budget Tracker
-3. View Total Expenses
-4. Exit
-Enter your choice: 3
+                    === Main Menu ===
+                    1. Add an Expense
+                    2. Budget Tracker
+                    3. View Total Expenses
+                    4. Exit
+                    Enter your choice: 3
 
-=== Total Expenses ===
+                    === Total Expenses ===
 
-Food: 1500.0
-Transportation: 0.0
-School: 0.0
-Entertainment: 0.0
-Other: 0.0
+                    Food: 1500.0
+                    Transportation: 0.0
+                    School: 0.0
+                    Entertainment: 0.0
+                    Other: 0.0
 
-Your total expenses so far is: 1500.0
-Remaining budget: 3500.0
+                    Your total expenses so far is: 1500.0
+                    Remaining budget: 3500.0
 
-=== Main Menu ===
-1. Add an Expense
-2. Budget Tracker
-3. View Total Expenses
-4. Exit
-Enter your choice: 4
+                    === Main Menu ===
+                    1. Add an Expense
+                    2. Budget Tracker
+                    3. View Total Expenses
+                    4. Exit
+                    Enter your choice: 4
 
-Thank you for using the Expense Tracker. Goodbye!</div>
+                    Thank you for using the Expense Tracker. Goodbye!</div>
             </div>
             <div class="reflection-box"
                 style="margin-top: 20px; padding: 20px; background: rgba(10, 132, 255, 0.05); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
