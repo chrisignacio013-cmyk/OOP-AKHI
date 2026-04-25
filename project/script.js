@@ -190,19 +190,73 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 1.5 + 0.5;
+                this.size = Math.random() * 2.0 + 0.3;
                 this.baseX = this.x;
                 this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
-                this.alpha = Math.random() * 0.6 + 0.4;
+                this.baseAlpha = Math.random() * 0.55 + 0.35;
+                this.alpha = this.baseAlpha;
                 this.z = Math.random() * width; // depth for warp speed
                 // random drift speed for dust-like floating
-                this.driftX = (Math.random() - 0.5) * 0.4;
-                this.driftY = (Math.random() - 0.5) * 0.4;
+                this.driftX = (Math.random() - 0.5) * 0.35;
+                this.driftY = (Math.random() - 0.5) * 0.35;
+                // Twinkle parameters
+                this.twinkleSpeed = Math.random() * 0.03 + 0.008;
+                this.twinkleOffset = Math.random() * Math.PI * 2;
+                // Sparkle: only larger stars get cross spikes
+                this.isSparkling = this.size > 1.2;
+                // Hue shift: mostly white, occasional blue/purple tint
+                const tint = Math.random();
+                if (tint < 0.15) {
+                    this.r = 180; this.g = 210; this.b = 255; // blue-white
+                } else if (tint < 0.25) {
+                    this.r = 220; this.g = 180; this.b = 255; // lavender
+                } else {
+                    this.r = 255; this.g = 255; this.b = 255; // pure white
+                }
             }
 
             draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                const a = this.alpha;
+                const r = this.r, g = this.g, b = this.b;
+
+                if (this.isSparkling) {
+                    // Soft glow bloom
+                    const glowRadius = this.size * 4;
+                    const grd = ctx.createRadialGradient(
+                        this.x, this.y, 0,
+                        this.x, this.y, glowRadius
+                    );
+                    grd.addColorStop(0, `rgba(${r},${g},${b},${(a * 0.6).toFixed(3)})`);
+                    grd.addColorStop(1, `rgba(${r},${g},${b},0)`);
+                    ctx.fillStyle = grd;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, glowRadius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Cross / 4-point spike
+                    const spikeLen = this.size * 5 * a;
+                    const spikeWidth = this.size * 0.3;
+                    ctx.save();
+                    ctx.globalAlpha = a * 0.75;
+                    ctx.strokeStyle = `rgba(${r},${g},${b},1)`;
+                    ctx.lineWidth = spikeWidth;
+                    ctx.lineCap = 'round';
+                    // Horizontal spike
+                    ctx.beginPath();
+                    ctx.moveTo(this.x - spikeLen, this.y);
+                    ctx.lineTo(this.x + spikeLen, this.y);
+                    ctx.stroke();
+                    // Vertical spike
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y - spikeLen);
+                    ctx.lineTo(this.x, this.y + spikeLen);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+
+                // Core bright dot
+                ctx.fillStyle = `rgba(${r},${g},${b},${a})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
@@ -210,6 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             update() {
+                // Twinkle: oscillate alpha
+                this.twinkleOffset += this.twinkleSpeed;
+                this.alpha = this.baseAlpha + Math.sin(this.twinkleOffset) * (this.baseAlpha * 0.55);
+                this.alpha = Math.max(0.05, Math.min(1, this.alpha));
+
                 // Constantly update base positions for a slow drift effect
                 this.baseX += this.driftX;
                 this.baseY += this.driftY;
@@ -288,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const initParticles = () => {
             particles = [];
-            let numberOfParticles = (width * height) / 9000;
+            let numberOfParticles = (width * height) / 3000;
             for (let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle());
             }
