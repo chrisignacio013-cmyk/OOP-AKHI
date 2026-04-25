@@ -50,7 +50,7 @@ body {
     border-radius: 50%;
     filter: blur(100px);
     z-index: -1;
-    opacity: 0.85;
+    opacity: 0.65;
     pointer-events: none;
     animation: floatGlow 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
